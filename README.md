@@ -107,6 +107,6 @@ This program has been tested and verified to work on the following operating sys
 * Canny Edge Result
 ![canny](/Image/EngPlaza001_edges.pgm.png)
 
-<br>
+
 **Throughput Optimization**
 ![canny](/Image/throughput_optimization.png)
