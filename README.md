@@ -95,7 +95,7 @@ This program has been tested and verified to work on the following operating sys
     By replacing dynamic memory allocation with static or pre-allocated memory, we can reduce the risk of such errors and improve the reliability of the system.
 
 * 0.1
-    **Bug fix in "non_max_supp" function** 
+    **Bug fix in "non_max_supp" function** <br>
     A column of pixels at the right and a row of pixels at the bottom are not included in 
     the computation. Change the for loop end condition.
 
