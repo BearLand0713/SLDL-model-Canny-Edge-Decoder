@@ -36,51 +36,51 @@ This program has been tested and verified to work on the following operating sys
 * 0.5 
     **Pipelining and parallelization of the Canny Edge Decoder**
     * Slice the BlurX and BlurY blocks into parallel components
-    DUT 
-    |------ Gaussian_Smooth gaussian_smooth 
-    | \\------ Gaussian_Kernel gauss 
-    |------ BlurX blurX 
-    | |------ BlurX_Slice sliceX1 
-    | |------ BlurX_Slice sliceX2 
-    | |------ BlurX_Slice sliceX3 
-    | |------ BlurX_Slice sliceX4 
-    | |------ BlurX_Slice sliceX5 
-    | |------ BlurX_Slice sliceX6 
-    | |------ BlurX_Slice sliceX7 
-    | \\------ BlurX_Slice sliceX8 
-    |------ BlurY blurY 
-    | |------ BlurY_Slice sliceY1 
-    | |------ BlurY_Slice sliceY2 
-    | |------ BlurY_Slice sliceY3 
-    | | [\...] 
-    | \\------ BlurY_Slice sliceY8 
-    |------ Derivative_X_Y derivative_x_y 
-    |------ Magnitude_X_Y magnitude_x_y 
-    |------ Non_Max_Supp non_max_supp 
-    \\------ Apply_Hysteresis apply_hysteresis 
+    DUT<br> 
+    |------ Gaussian_Smooth gaussian_smooth<br> 
+    | \\------ Gaussian_Kernel gauss<br> 
+    |------ BlurX blurX <br>
+    | |------ BlurX_Slice sliceX1 <br>
+    | |------ BlurX_Slice sliceX2 <br>
+    | |------ BlurX_Slice sliceX3 <br>
+    | |------ BlurX_Slice sliceX4 <br>
+    | |------ BlurX_Slice sliceX5 <br>
+    | |------ BlurX_Slice sliceX6 <br>
+    | |------ BlurX_Slice sliceX7 <br>
+    | \\------ BlurX_Slice sliceX8 <br>
+    |------ BlurY blurY <br>
+    | |------ BlurY_Slice sliceY1 <br>
+    | |------ BlurY_Slice sliceY2 <br>
+    | |------ BlurY_Slice sliceY3 <br>
+    | | [\...] <br>
+    | \\------ BlurY_Slice sliceY8 <br> 
+    |------ Derivative_X_Y derivative_x_y <br>
+    |------ Magnitude_X_Y magnitude_x_y <br>
+    |------ Non_Max_Supp non_max_supp <br>
+    \\------ Apply_Hysteresis apply_hysteresis <br> 
 
 
 * 0.4
     **Hierarchical DUT model of the Canny Edge Decoder**
-    DUT canny 
-    |------ Gaussian_Smooth gaussian_smooth 
-    | |------ Gaussian_Kernel gauss 
-    | |------ BlurX blurX 
-    | \\------ BlurY blurY 
-    |------ Derivative_X_Y derivative_x_y 
-    |------ Magnitude_X_Y magnitude_x_y 
-    |------ Non_Max_Supp non_max_supp 
-    \\------ Apply_Hysteresis apply_hysteresis
+    DUT canny <br>
+    |------ Gaussian_Smooth gaussian_smooth <br> 
+    | |------ Gaussian_Kernel gauss <br>
+    | |------ BlurX blurX <br>
+    | \\------ BlurY blurY <br>
+    |------ Derivative_X_Y derivative_x_y <br>
+    |------ Magnitude_X_Y magnitude_x_y <br>
+    |------ Non_Max_Supp non_max_supp <br>
+    \\------ Apply_Hysteresis apply_hysteresis <br>
 
 * 0.3
     **Structural test bench model of the Canny Edge Decoder**
-    Main / Top 
-    |------ Stimulus stimulus 
-    |------ Platform platform 
-    | |------ DataIn din 
-    | |------ DUT canny 
-    | \\------ DataOut dout 
-    \\------ Monitor monitor 
+    Main / Top <br>
+    |------ Stimulus stimulus <br>
+    |------ Platform platform <br>
+    | |------ DataIn din <br>
+    | |------ DUT canny <br>
+    | \\------ DataOut dout <br>
+    \\------ Monitor monitor <br>
 
 * 0.2
     **Initial SLDL Model of the Canny Edge Decoder**
