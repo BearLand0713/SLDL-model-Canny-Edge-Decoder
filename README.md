@@ -1,0 +1,111 @@
+# SLDL: Canny Edge Decorder
+
+A embedded system level Canny Edge Decorder that can detect the edges on a wide range of objects with multi-stage algorithm.
+
+## Description
+
+This project involves implementing the Canny Edge Decoder in a SystemC-based SoC architecture. The goal is to demonstrate proficiency in system-level design using high-level modeling languages. The final deliverable will be a working implementation of the decoder with simulation and valuation results.
+
+## Project Outcomes
+The final deliverable of this project is a working implementation of the Canny Edge Decoder, with simulation and verification results that demonstrate its performance and accuracy. The implementation includes a pipeline architecture that allows for efficient processing of large images, and a memory management system that minimizes memory usage and maximizes throughput.
+
+## Code Attribution
+This project includes code from the following sources:
+
+http://www.eng.usf.edu/cvprg/edge/edge_detection.html
+Original Canny Edge Decoder implementation by Heath, M., Sarkar, S., Sanocki, T., and Bowyer, K., licensed under the USF license.
+
+## Dependencies
+
+Before installing and running this program, you will need to have the following dependencies installed:
+* SystemC 2.3.1
+
+You can download and install SystemC from the official website at http://www.accellera.org/downloads/standards/systemc. Once you have installed SystemC, make sure that the SYSTEMC_HOME environment variable is set to the installation directory.
+
+This program has been tested and verified to work on the following operating systems:
+* Ubuntu 20.04 LTS
+* Windows 10
+
+## Version History
+
+* 0.6
+    **Throughput optimization of the Canny Edge Decoder**
+    * Trade-off between accuracy and speed
+    Replace floating-point arithmetic with fixed-point calculations
+
+* 0.5 
+    **Pipelining and parallelization of the Canny Edge Decoder**
+    * Slice the BlurX and BlurY blocks into parallel components
+    DUT 
+    |------ Gaussian_Smooth gaussian_smooth 
+    | \\------ Gaussian_Kernel gauss 
+    |------ BlurX blurX 
+    | |------ BlurX_Slice sliceX1 
+    | |------ BlurX_Slice sliceX2 
+    | |------ BlurX_Slice sliceX3 
+    | |------ BlurX_Slice sliceX4 
+    | |------ BlurX_Slice sliceX5 
+    | |------ BlurX_Slice sliceX6 
+    | |------ BlurX_Slice sliceX7 
+    | \\------ BlurX_Slice sliceX8 
+    |------ BlurY blurY 
+    | |------ BlurY_Slice sliceY1 
+    | |------ BlurY_Slice sliceY2 
+    | |------ BlurY_Slice sliceY3 
+    | | [\...] 
+    | \\------ BlurY_Slice sliceY8 
+    |------ Derivative_X_Y derivative_x_y 
+    |------ Magnitude_X_Y magnitude_x_y 
+    |------ Non_Max_Supp non_max_supp 
+    \\------ Apply_Hysteresis apply_hysteresis 
+
+
+* 0.4
+    **Hierarchical DUT model of the Canny Edge Decoder**
+    DUT canny 
+    |------ Gaussian_Smooth gaussian_smooth 
+    | |------ Gaussian_Kernel gauss 
+    | |------ BlurX blurX 
+    | \\------ BlurY blurY 
+    |------ Derivative_X_Y derivative_x_y 
+    |------ Magnitude_X_Y magnitude_x_y 
+    |------ Non_Max_Supp non_max_supp 
+    \\------ Apply_Hysteresis apply_hysteresis
+
+* 0.3
+    **Structural test bench model of the Canny Edge Decoder**
+    Main / Top 
+    |------ Stimulus stimulus 
+    |------ Platform platform 
+    | |------ DataIn din 
+    | |------ DUT canny 
+    | \\------ DataOut dout 
+    \\------ Monitor monitor 
+
+* 0.2
+    **Initial SLDL Model of the Canny Edge Decoder**
+    * Remove or replace all remaining dynamic memory allocation
+    *Avoid Fragmentation*
+    Embedded systems can run for years, Using dynamic memory can cause a severe waste of memory due to fragmentation.
+    *Predictability*
+    By using static memory allocation or pre-allocated memory pools, we can ensure that the amount of memory used is predictable and consistent, allowing for better resource management and system performance.
+    *Efficiency*
+    By using static memory allocation or pre-allocated memory pools, we can improve system efficiency and speed.
+    *Reliability*
+    By replacing dynamic memory allocation with static or pre-allocated memory, we can reduce the risk of such errors and improve the reliability of the system.
+
+* 0.1
+    **Bug fix in "non_max_supp" function** 
+    A column of pixels at the right and a row of pixels at the bottom are not included in 
+    the computation. Change the for loop end condition.
+
+## Results
+
+**Photo Result** 
+* Original Photo
+![orig](/Image/EngPlaza001.pgm.png)
+* Canny Edge Result
+![canny](/Image/EngPlaza001_edges.pgm.png)
+
+**Throughput Optimization**
+![canny](/Image/throughput_optimization.png)
